@@ -1,6 +1,6 @@
 package or.generation.italy;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,7 +20,9 @@ public class Main {
 		Random r = new Random();
 		
 		int carta;
-		HashSet <Integer> mazzo = new HashSet <>();
+		ArrayList <Integer> mazzo = new ArrayList <>();
+		HashSet <Integer> cartePescate = new HashSet <>();
+		
 		
 		for (int i=0; i<40; i++)
 		{
@@ -32,6 +34,14 @@ public class Main {
 				i--;
 		}
 ////////////////////////////////////////////////////////////////////
+		
+		for (int n:mazzo)
+		{
+			System.out.println("la carta è :" + n);
+			System.out.println("vuoi continuare? (si/no)");
+			System.out.println("la carta è :" + n);
+		}
+			
 		
 		sc.close();
 	}
