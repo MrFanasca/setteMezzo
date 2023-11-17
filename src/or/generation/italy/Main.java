@@ -19,9 +19,10 @@ public class Main {
 		Scanner sc = new Scanner (System.in);
 		Random r = new Random();
 		
-		int carta;
+		int carta, cartaPescata;
 		ArrayList <Integer> mazzo = new ArrayList <>();
-		HashSet <Integer> cartePescate = new HashSet <>();
+		String risposta, seme;
+		
 		
 		
 		for (int i=0; i<40; i++)
@@ -35,13 +36,38 @@ public class Main {
 		}
 ////////////////////////////////////////////////////////////////////
 		
-		for (int n:mazzo)
+		risposta="";
+		do
 		{
-			System.out.println("la carta è :" + n);
-			System.out.println("vuoi continuare? (si/no)");
-			System.out.println("la carta è :" + n);
-		}
+			for (int n:mazzo)
+			{
+				cartaPescata=n%10;
+				if (n<=10)
+				{
+					seme="denari";
+					System.out.println("la carta è : " + cartaPescata + " di " + seme);
+				}
+				else if (n>10 && n<=20)
+				{
+					seme="bastoni";
+					System.out.println("la carta è : " + cartaPescata + " di " + seme);
+				}
+				else if (n>20 && n<=30)
+				{
+					seme="spade";
+					System.out.println("la carta è : " + cartaPescata + " di " + seme);
+				}
+				else if (n>30 && n<=40)
+				{
+					seme="coppe";
+					System.out.println("la carta è : " + cartaPescata + " di " + seme);
+				}
+				break;
+			}
+			System.out.println("vuoi continuare? (s/n)");
+			risposta=sc.nextLine();
 			
+		}	while (risposta.equals("s"));
 		
 		sc.close();
 	}
