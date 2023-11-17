@@ -19,6 +19,7 @@ public class Main {
 		Scanner sc = new Scanner (System.in);
 		Random r = new Random();
 		
+		float punteggio=0, punteggioTot=0;
 		int carta, cartaPescata;
 		ArrayList <Integer> mazzo = new ArrayList <>();
 		String risposta, seme;
@@ -28,13 +29,13 @@ public class Main {
 		for (int i=0; i<40; i++)
 		{
 			carta=r.nextInt(40) +1;
-			
 			if (mazzo.contains(carta)==false)
 				mazzo.add(carta);
 			else
 				i--;
 		}
-////////////////////////////////////////////////////////////////////
+		
+//////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		risposta="";
 		do
@@ -42,6 +43,16 @@ public class Main {
 			for (int n:mazzo)
 			{
 				cartaPescata=n%10;
+				
+				if (n%10==0)
+					cartaPescata=10;
+				
+				if	(cartaPescata<=7)
+					punteggio=cartaPescata;
+				
+				else if (cartaPescata>7)
+					punteggio=0.5f;
+				
 				if (n<=10)
 				{
 					seme="denari";
@@ -62,12 +73,31 @@ public class Main {
 					seme="coppe";
 					System.out.println("la carta è : " + cartaPescata + " di " + seme);
 				}
-				break;
+				
+				punteggioTot=punteggioTot+punteggio;
+				System.out.println("\nIl tuo punteggio attuale è " + punteggioTot);
+				if (punteggioTot>7.5f)
+				{
+					System.out.println("Hai sballato");
+					break;
+				}
+				else
+				{
+					System.out.println("\nVuoi pescare un'altra carta? (s/n)");
+					risposta=sc.nextLine();
+					if (risposta.equals("n"))
+						break;
+				}
+				
 			}
-			System.out.println("vuoi continuare? (s/n)");
-			risposta=sc.nextLine();
 			
+			System.out.println("\nVuoi continuare a giocare? (s/n)");
+			risposta=sc.nextLine();
 		}	while (risposta.equals("s"));
+		
+//////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
 		
 		sc.close();
 	}
